@@ -1,0 +1,83 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #fdf5f6;
+  --foreground: #1e1b1c;
+  --primary-red: #b8233e;
+  --primary-red-hover: #981b31;
+  --nav-dark: #201a24;
+  --nav-dark-hover: #141018;
+  --border-light: #f3d7dc;
+}
+
+body {
+  color: var(--foreground);
+  background-color: var(--background);
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(248, 215, 221, 0.35) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, rgba(254, 226, 230, 0.4) 0px, transparent 50%);
+  background-attachment: fixed;
+  font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+}
+
+/* Ensure minimum touch targets on mobile */
+button,
+a,
+input,
+select,
+textarea {
+  touch-action: manipulation;
+}
+
+/* 3D Realistic Physical Depth Cards */
+.card-3d {
+  background: #ffffff;
+  border: 1px solid #ebd0d5;
+  border-bottom: 4px solid #d9aab2;
+  border-radius: 0.85rem;
+  box-shadow: 
+    0 4px 10px -2px rgba(184, 35, 62, 0.07),
+    0 2px 4px -1px rgba(0, 0, 0, 0.03),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  transition: transform 0.22s cubic-bezier(0.2, 0, 0, 1), box-shadow 0.22s cubic-bezier(0.2, 0, 0, 1), border-color 0.22s ease;
+}
+
+.card-3d:hover {
+  transform: translateY(-5px);
+  border-color: #df9ea8;
+  border-bottom: 4px solid #b8233e;
+  box-shadow: 
+    0 16px 30px -6px rgba(184, 35, 62, 0.16),
+    0 8px 14px -3px rgba(0, 0, 0, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 1);
+}
+
+/* 3D Buttons */
+.btn-3d {
+  border-bottom: 3px solid rgba(0, 0, 0, 0.25);
+  transition: all 0.15s ease-in-out;
+}
+.btn-3d:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.05);
+}
+.btn-3d:active {
+  transform: translateY(2px);
+  border-bottom-width: 1px;
+}
+
+/* Story Headline */
+.story-headline {
+  font-family: var(--font-noto-sans-devanagari), var(--font-inter), sans-serif;
+  color: #1a1618;
+  transition: color 0.15s ease-in-out;
+}
+
+.story-headline:hover {
+  color: #b8233e;
+}
