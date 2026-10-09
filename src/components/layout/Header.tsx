@@ -23,11 +23,11 @@ export function Header() {
               className="h-10 sm:h-12 w-auto object-contain transition-transform group-hover:scale-[1.02]"
               priority
             />
-            <div className="hidden sm:block">
-              <div className="text-xl font-black text-[#b8233e] tracking-tight leading-tight font-devanagari">
+            <div>
+              <div className="text-base sm:text-xl font-black text-[#b8233e] tracking-tight leading-tight font-devanagari">
                 Chut Ki Kahani
               </div>
-              <div className="text-[10px] text-gray-500 font-devanagari leading-snug max-w-[240px]">
+              <div className="text-[9px] sm:text-[10px] text-gray-500 font-devanagari leading-snug max-w-[160px] sm:max-w-[240px]">
                 18+ वयस्क पाठकों के लिए 100% मौलिक एवं काल्पनिक कहानियाँ
               </div>
             </div>
@@ -72,7 +72,7 @@ export function Header() {
       </div>
 
       {/* Main Navigation Bar (Dark) — Home + All Categories only */}
-      <nav className="hidden md:block bg-[#2c3e50] text-white border-y border-[#1a252f] sticky top-0 z-40 shadow-xs">
+      <nav className="block bg-[#2c3e50] text-white border-y border-[#1a252f] sticky top-0 z-40 shadow-xs">
         <div className="max-w-[1100px] mx-auto px-4 flex items-center text-xs font-bold tracking-wide uppercase">
           <Link
             href="/"

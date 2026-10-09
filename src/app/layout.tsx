@@ -7,7 +7,6 @@ import { AGE_COOKIE_NAME, AGE_DENIED_COOKIE_NAME } from '@/config/constants';
 import { verifyAgeGateToken } from '@/lib/age-gate';
 import { AgeGateModal } from '@/components/age-gate/AgeGateModal';
 import { Header } from '@/components/layout/Header';
-import { BottomBar } from '@/components/layout/BottomBar';
 import { Footer } from '@/components/layout/Footer';
 
 const inter = Inter({
@@ -139,12 +138,11 @@ export default async function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
         />
       </head>
-      <body className="min-h-screen flex flex-col bg-white text-gray-900 font-sans antialiased selection:bg-red-100 selection:text-red-900 pb-14 md:pb-0">
+      <body className="min-h-screen flex flex-col bg-white text-gray-900 font-sans antialiased selection:bg-red-100 selection:text-red-900">
         {showOverlay && <AgeGateModal returnTo="/" isOverlay={true} />}
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
-        <BottomBar />
       </body>
     </html>
   );
