@@ -140,3 +140,61 @@ export async function requestPasswordReset(
     error: undefined,
   };
 }
+
+export async function resetPasswordAction(
+  _prevState: AuthActionResult | null,
+  formData: FormData
+): Promise<AuthActionResult> {
+  const token = (formData.get('token') as string) || '';
+  const password = (formData.get('password') as string) || '';
+  const confirmPassword = (formData.get('confirmPassword') as string) || '';
+
+  if (!token) {
+    return { success: false, error: 'अमान्य या गायब टोकन।' };
+  }
+
+  if (password.length < 12) {
+    return { success: false, error: 'पासवर्ड कम से कम 12 अक्षरों का होना चाहिए।' };
+  }
+
+  if (password !== confirmPassword) {
+    return { success: false, error: 'दोनों पासवर्ड मेल नहीं खाते।' };
+  }
+
+  // Look up reset token in DB
+  const resetRecord = await db.passwordResetToken.findUnique({
+    where: { token },
+  });
+
+  if (!resetRecord || resetRecord.expiresAt < new Date()) {
+    return {
+      success: false,
+      error: 'यह रीसेट लिंक समाप्त या अमान्य हो चुका है। कृपया नया लिंक मांगें।',
+    };
+  }
+
+  const salt = await bcrypt.genSalt(12);
+  const passwordHash = await bcrypt.hash(password, salt);
+
+  // Update user password
+  const user = await db.user.update({
+    where: { email: resetRecord.email },
+    data: { passwordHash },
+  });
+
+  // Delete all reset tokens for this email to prevent reuse
+  await db.passwordResetToken.deleteMany({
+    where: { email: resetRecord.email },
+  });
+
+  await db.auditLog.create({
+    data: {
+      actorId: user.id,
+      action: 'PASSWORD_RESET_COMPLETE',
+      entity: 'USER',
+      entityId: user.id,
+    },
+  });
+
+  return { success: true };
+}

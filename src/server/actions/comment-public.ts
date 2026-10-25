@@ -4,7 +4,7 @@ import { revalidatePath } from 'next/cache';
 import { db } from '@/lib/db';
 import { CommentStatus } from '@prisma/client';
 import { headers } from 'next/headers';
-import { createHash } from 'crypto';
+import { hashIp } from '@/lib/security';
 
 // Rate limit: max 3 comments per IP per hour
 async function checkCommentRateLimit(ipHash: string): Promise<boolean> {
@@ -45,7 +45,7 @@ export async function submitCommentAction(
     headersList.get('x-forwarded-for')?.split(',')[0]?.trim() ||
     headersList.get('x-real-ip') ||
     'unknown';
-  const ipHash = createHash('sha256').update(ip + process.env.AUTH_SECRET).digest('hex');
+  const ipHash = hashIp(ip);
 
   // Rate limit check
   const allowed = await checkCommentRateLimit(ipHash);

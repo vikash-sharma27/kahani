@@ -23,6 +23,12 @@ export const metadata: Metadata = {
     'वयस्क कहानियाँ',
   ],
   alternates: { canonical: `${baseUrl}/categories` },
+  robots: {
+    index: true,
+    follow: true,
+    'max-image-preview': 'large',
+    'max-snippet': -1,
+  },
   openGraph: {
     title: 'सभी कहानी श्रेणियाँ (All Categories) | KahaniNest',
     description:
@@ -38,6 +44,10 @@ export const metadata: Metadata = {
     title: 'सभी कहानी श्रेणियाँ | KahaniNest',
     description: 'Explore all Hindi adult fiction story categories on KahaniNest.',
     images: [`${baseUrl}/logo.png`],
+  },
+  other: {
+    rating: 'adult',
+    'RTA-5042-1996-1400-1577-RTA': 'RTA-5042-1996-1400-1577-RTA',
   },
 };
 

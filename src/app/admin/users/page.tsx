@@ -8,8 +8,22 @@ import { Role } from '@prisma/client';
 
 export const metadata: Metadata = { title: 'Team Accounts | Admin' };
 
-export default async function AdminUsersPage() {
+interface AdminUsersPageProps {
+  searchParams?: { error?: string; success?: string };
+}
+
+export default async function AdminUsersPage({ searchParams }: AdminUsersPageProps) {
   const currentSession = await requireRole(Role.ADMIN);
+
+  const errorMessageMap: Record<string, string> = {
+    EMAIL_EXISTS: 'यह ईमेल पहले से किसी टीम सदस्य के खाते में दर्ज है। कृपया दूसरा ईमेल इस्तेमाल करें।',
+    PASSWORD_TOO_SHORT: 'पासवर्ड कम से कम 12 अक्षरों का होना अनिवार्य है।',
+    INVALID_EMAIL: 'कृपया एक मान्य ईमेल पता दर्ज करें।',
+    DB_ERROR: 'खाता बनाने में डेटाबेस त्रुटि आई। कृपया पुनः प्रयास करें।',
+  };
+
+  const errorMessage = searchParams?.error ? errorMessageMap[searchParams.error] || 'अनुरोध विफल रहा।' : null;
+  const isSuccess = Boolean(searchParams?.success);
 
   const users = await db.user.findMany({
     orderBy: { createdAt: 'desc' },
@@ -34,6 +48,20 @@ export default async function AdminUsersPage() {
           केवल आंतरिक संपादकों एवं प्रशासकों के खाते (पाठकों के लिए कोई खाता नहीं है)
         </p>
       </div>
+
+      {errorMessage && (
+        <div className="p-4 bg-red-50 border border-red-200 text-red-800 rounded-xl text-sm font-devanagari flex items-center gap-2 shadow-2xs">
+          <span>⚠️</span>
+          <span>{errorMessage}</span>
+        </div>
+      )}
+
+      {isSuccess && (
+        <div className="p-4 bg-green-50 border border-green-200 text-green-800 rounded-xl text-sm font-devanagari flex items-center gap-2 shadow-2xs">
+          <span>✅</span>
+          <span>नया टीम सदस्य सफलतापूर्वक जोड़ दिया गया है!</span>
+        </div>
+      )}
 
       {/* Create Team User Form */}
       <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">

@@ -150,7 +150,13 @@ export default async function AdminStoriesPage({
                     <td className="px-4 py-3.5 text-xs text-gray-500">
                       {formatDate(story.publishedAt || story.createdAt)}
                     </td>
-                    <td className="px-4 py-3.5 text-right space-x-2">
+                    <td className="px-4 py-3.5 text-right space-x-3">
+                      <Link
+                        href={`/admin/stories/${story.id}/edit`}
+                        className="text-blue-600 hover:text-blue-800 text-xs font-semibold"
+                      >
+                        संपादित करें (Edit)
+                      </Link>
                       <form
                         action={deleteStoryAction.bind(null, story.id)}
                         className="inline-block"

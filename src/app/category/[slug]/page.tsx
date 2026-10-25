@@ -20,6 +20,18 @@ interface CategoryPageProps {
   searchParams: { page?: string };
 }
 
+export async function generateStaticParams() {
+  try {
+    const categories = await db.category.findMany({
+      select: { slug: true },
+      take: 50,
+    });
+    return categories.map((cat) => ({ slug: cat.slug }));
+  } catch {
+    return [];
+  }
+}
+
 export async function generateMetadata({ params }: CategoryPageProps): Promise<Metadata> {
   const category = await db.category.findUnique({
     where: { slug: params.slug },
@@ -42,11 +54,19 @@ export async function generateMetadata({ params }: CategoryPageProps): Promise<M
     keywords: [
       `${category.name} कहानियाँ`,
       `${category.name} stories in hindi`,
+      `${category.name} adult stories`,
       'हिंदी कहानियाँ',
       'adult fiction hindi',
       'desikahani',
+      'KahaniNest',
     ],
     alternates: { canonical: canonicalUrl },
+    robots: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
     openGraph: {
       title,
       description,
@@ -61,6 +81,10 @@ export async function generateMetadata({ params }: CategoryPageProps): Promise<M
       title,
       description,
       images: [`${baseUrl}/logo.png`],
+    },
+    other: {
+      rating: 'adult',
+      'RTA-5042-1996-1400-1577-RTA': 'RTA-5042-1996-1400-1577-RTA',
     },
   };
 }

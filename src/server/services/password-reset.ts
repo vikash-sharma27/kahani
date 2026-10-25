@@ -37,6 +37,14 @@ export async function sendPasswordResetEmail(email: string, token: string): Prom
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
   const resetLink = `${siteUrl}/admin/reset-password?token=${token}`;
 
+  // In development, log the link to console so you can test without Resend API key
+  if (process.env.NODE_ENV !== 'production') {
+    console.log('\n========================================');
+    console.log('🔑 [PASSWORD RESET LINK FOR DEV]:');
+    console.log(resetLink);
+    console.log('========================================\n');
+  }
+
   try {
     const res = await fetch('https://api.resend.com/emails', {
       method: 'POST',
