@@ -26,13 +26,13 @@ export const metadata: Metadata = {
     'रोमांस कहानियाँ',
     'desikahani',
     'Chut Ki Kahani',
-    'Hinglish stories',
+    'Hindi stories',
   ],
   alternates: { canonical: baseUrl },
   openGraph: {
-    title: 'Chut Ki Kahani – हिंदी एवं हिंग्लिश 18+ वयस्क कहानियाँ',
+    title: 'Chut Ki Kahani – हिंदी 18+ वयस्क कहानियाँ',
     description:
-      'सर्वश्रेष्ठ हिंदी एवं हिंग्लिश वयस्क कहानियों का प्रमुख मंच। पारिवारिक, रोमांस, ड्रामा और रहस्य की लोकप्रिय कहानियाँ।',
+      'सर्वश्रेष्ठ हिंदी वयस्क कहानियों का प्रमुख मंच। पारिवारिक, रोमांस, ड्रामा और रहस्य की लोकप्रिय कहानियाँ।',
     url: baseUrl,
     siteName: 'Chut Ki Kahani',
     locale: 'hi_IN',
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Chut Ki Kahani – 18+ Adult Stories in Hindi',
-    description: 'Read original Hindi and Hinglish adult fiction stories.',
+    description: 'Read original Hindi adult fiction stories.',
     images: [`${baseUrl}/logo.png`],
   },
 };
@@ -102,7 +102,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
         '@id': `${baseUrl}/#website`,
         url: baseUrl,
         name: 'Chut Ki Kahani',
-        description: '18+ adult fiction reading platform for Hindi and Hinglish stories.',
+        description: '18+ adult fiction reading platform for Hindi stories.',
         inLanguage: 'hi',
         potentialAction: {
           '@type': 'SearchAction',

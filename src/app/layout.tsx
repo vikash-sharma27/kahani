@@ -27,11 +27,11 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://kahaninest.com';
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: 'Chut Ki Kahani – हिंदी एवं हिंग्लिश 18+ वयस्क कहानियाँ',
+    default: 'Chut Ki Kahani – हिंदी 18+ वयस्क कहानियाँ',
     template: `%s | ${env.SITE_NAME || 'Chut Ki Kahani'}`,
   },
   description:
-    'Chut Ki Kahani पर पढ़ें मौलिक हिंदी और हिंग्लिश वयस्क कहानियाँ। पारिवारिक, रोमांस, ड्रामा, रहस्य और रोमांच से भरपूर 100% मौलिक काल्पनिक कहानियाँ।',
+    'Chut Ki Kahani पर पढ़ें मौलिक हिंदी वयस्क कहानियाँ। पारिवारिक, रोमांस, ड्रामा, रहस्य और रोमांच से भरपूर 100% मौलिक काल्पनिक कहानियाँ।',
   applicationName: 'Chut Ki Kahani',
   authors: [{ name: 'Chut Ki Kahani Editorial Team' }],
   generator: 'Next.js',
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     '18+ Hindi kahani',
     'पारिवारिक कहानियाँ',
     'रोमांस कहानियाँ',
-    'Hinglish adult stories',
+    'Hindi adult stories',
     'Chut Ki Kahani',
     'desikahani',
     'desi stories in hindi',
@@ -77,9 +77,9 @@ export const metadata: Metadata = {
     alternateLocale: ['en_US'],
     url: siteUrl,
     siteName: 'Chut Ki Kahani',
-    title: 'Chut Ki Kahani – हिंदी एवं हिंग्लिश 18+ वयस्क कहानियाँ',
+    title: 'Chut Ki Kahani – हिंदी 18+ वयस्क कहानियाँ',
     description:
-      'सर्वश्रेष्ठ हिंदी एवं हिंग्लिश वयस्क कहानियों का मंच। पारिवारिक, रोमांस, ड्रामा और रहस्य की लोकप्रिय कहानियाँ।',
+      'सर्वश्रेष्ठ हिंदी वयस्क कहानियों का मंच। पारिवारिक, रोमांस, ड्रामा और रहस्य की लोकप्रिय कहानियाँ।',
     images: [
       {
         url: '/logo.png',
@@ -92,7 +92,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Chut Ki Kahani – 18+ Hindi Adult Stories',
-    description: 'Read original Hindi and Hinglish adult fiction stories.',
+    description: 'Read original Hindi adult fiction stories.',
     images: ['/logo.png'],
   },
   other: {
