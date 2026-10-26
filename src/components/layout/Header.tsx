@@ -3,10 +3,24 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 
 export function Header() {
+  const router = useRouter();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mobileSearchOpen, setMobileSearchOpen] = useState(false);
+
+  const handleSearchSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const input = form.elements.namedItem('q') as HTMLInputElement | null;
+    const val = input?.value?.trim();
+    if (val) {
+      setMobileSearchOpen(false);
+      setMobileMenuOpen(false);
+      router.push(`/search?q=${encodeURIComponent(val)}`);
+    }
+  };
 
   return (
     <>
@@ -36,7 +50,7 @@ export function Header() {
 
           {/* Quick Search on Desktop */}
           <div className="hidden md:flex items-center flex-1 max-w-xs justify-end">
-            <form action="/search" method="GET" className="flex w-full">
+            <form action="/search" method="GET" onSubmit={handleSearchSubmit} className="flex w-full">
               <input
                 type="text"
                 name="q"
@@ -79,8 +93,8 @@ export function Header() {
             <form
               action="/search"
               method="GET"
+              onSubmit={handleSearchSubmit}
               className="flex items-center gap-2 max-w-[1100px] mx-auto"
-              onSubmit={() => setMobileSearchOpen(false)}
             >
               <div className="relative flex-1">
                 <input
@@ -149,7 +163,7 @@ export function Header() {
               action="/search"
               method="GET"
               className="mt-3 flex gap-2"
-              onSubmit={() => setMobileMenuOpen(false)}
+              onSubmit={handleSearchSubmit}
             >
               <input
                 type="text"
