@@ -11,9 +11,9 @@ export const revalidate = 3600;
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://kahaninest.com';
 
 export const metadata: Metadata = {
-  title: 'सभी कहानी श्रेणियाँ (All Story Categories) | KahaniNest',
+  title: 'सभी कहानी श्रेणियाँ (All Story Categories) | Chut Ki Kahani',
   description:
-    'KahaniNest की सभी वयस्क कहानी श्रेणियाँ देखें – पारिवारिक, रोमांस, ड्रामा, रहस्य, फैंटेसी और कॉमेडी की लोकप्रिय हिंदी व हिंग्लिश कहानियाँ।',
+    'Chut Ki Kahani की सभी वयस्क कहानी श्रेणियाँ देखें – पारिवारिक, रोमांस, ड्रामा, रहस्य, फैंटेसी और कॉमेडी की लोकप्रिय हिंदी व हिंग्लिश कहानियाँ।',
   keywords: [
     'कहानी श्रेणियाँ',
     'हिंदी स्टोरी केटेगरी',
@@ -21,6 +21,7 @@ export const metadata: Metadata = {
     'रोमांस कहानियाँ',
     'पारिवारिक कहानियाँ',
     'वयस्क कहानियाँ',
+    'Chut Ki Kahani',
   ],
   alternates: { canonical: `${baseUrl}/categories` },
   robots: {
@@ -30,19 +31,19 @@ export const metadata: Metadata = {
     'max-snippet': -1,
   },
   openGraph: {
-    title: 'सभी कहानी श्रेणियाँ (All Categories) | KahaniNest',
+    title: 'सभी कहानी श्रेणियाँ (All Categories) | Chut Ki Kahani',
     description:
       'अपनी पसंदीदा श्रेणी चुनें – पारिवारिक, रोमांस, ड्रामा, रहस्य, और फैंटेसी की सैकड़ों मौलिक कहानियाँ।',
     url: `${baseUrl}/categories`,
-    siteName: 'KahaniNest',
+    siteName: 'Chut Ki Kahani',
     locale: 'hi_IN',
     type: 'website',
-    images: [{ url: `${baseUrl}/logo.png`, width: 600, height: 200, alt: 'KahaniNest Logo' }],
+    images: [{ url: `${baseUrl}/logo.png`, width: 600, height: 200, alt: 'Chut Ki Kahani Logo' }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'सभी कहानी श्रेणियाँ | KahaniNest',
-    description: 'Explore all Hindi adult fiction story categories on KahaniNest.',
+    title: 'सभी कहानी श्रेणियाँ | Chut Ki Kahani',
+    description: 'Explore all Hindi adult fiction story categories on Chut Ki Kahani.',
     images: [`${baseUrl}/logo.png`],
   },
   other: {
@@ -87,9 +88,9 @@ export default async function CategoriesPage() {
       },
       {
         '@type': 'CollectionPage',
-        name: 'सभी कहानी श्रेणियाँ | KahaniNest',
+        name: 'सभी कहानी श्रेणियाँ | Chut Ki Kahani',
         url: `${baseUrl}/categories`,
-        description: 'Explore all adult story categories on KahaniNest.',
+        description: 'Explore all adult story categories on Chut Ki Kahani.',
         hasPart: categories.map((cat) => ({
           '@type': 'WebPage',
           name: cat.name,

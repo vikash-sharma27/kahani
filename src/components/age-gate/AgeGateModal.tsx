@@ -28,7 +28,7 @@ export function AgeGateModal({ returnTo = '/', isOverlay = false }: AgeGateModal
 
         {/* Brand / Logo */}
         <h1 className="text-2xl md:text-3xl font-extrabold tracking-tight mb-3 text-gray-900 font-devanagari">
-          {process.env.SITE_NAME || 'KahaniNest'}
+          {process.env.SITE_NAME || 'Chut Ki Kahani'}
         </h1>
 
         {/* Primary Hindi Question */}

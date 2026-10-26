@@ -1,5 +1,5 @@
 export const siteConfig = {
-  name: process.env.SITE_NAME || 'KahaniNest',
+  name: process.env.SITE_NAME || 'Chut Ki Kahani',
   description: '18+ adult fiction reading platform for Hindi and Hinglish original stories.',
   url: process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000',
   links: {

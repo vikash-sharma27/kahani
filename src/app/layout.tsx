@@ -27,13 +27,13 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://kahaninest.com';
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: 'KahaniNest – हिंदी एवं हिंग्लिश 18+ वयस्क कहानियाँ',
-    template: `%s | ${env.SITE_NAME || 'KahaniNest'}`,
+    default: 'Chut Ki Kahani – हिंदी एवं हिंग्लिश 18+ वयस्क कहानियाँ',
+    template: `%s | ${env.SITE_NAME || 'Chut Ki Kahani'}`,
   },
   description:
-    'KahaniNest पर पढ़ें मौलिक हिंदी और हिंग्लिश वयस्क कहानियाँ। पारिवारिक, रोमांस, ड्रामा, रहस्य और रोमांच से भरपूर 100% मौलिक काल्पनिक कहानियाँ।',
-  applicationName: 'KahaniNest',
-  authors: [{ name: 'KahaniNest Editorial Team' }],
+    'Chut Ki Kahani पर पढ़ें मौलिक हिंदी और हिंग्लिश वयस्क कहानियाँ। पारिवारिक, रोमांस, ड्रामा, रहस्य और रोमांच से भरपूर 100% मौलिक काल्पनिक कहानियाँ।',
+  applicationName: 'Chut Ki Kahani',
+  authors: [{ name: 'Chut Ki Kahani Editorial Team' }],
   generator: 'Next.js',
   keywords: [
     'हिंदी कहानियाँ',
@@ -43,13 +43,13 @@ export const metadata: Metadata = {
     'पारिवारिक कहानियाँ',
     'रोमांस कहानियाँ',
     'Hinglish adult stories',
-    'KahaniNest',
+    'Chut Ki Kahani',
     'desikahani',
     'desi stories in hindi',
   ],
   referrer: 'origin-when-cross-origin',
-  creator: 'KahaniNest',
-  publisher: 'KahaniNest',
+  creator: 'Chut Ki Kahani',
+  publisher: 'Chut Ki Kahani',
   formatDetection: {
     email: false,
     address: false,
@@ -76,8 +76,8 @@ export const metadata: Metadata = {
     locale: 'hi_IN',
     alternateLocale: ['en_US'],
     url: siteUrl,
-    siteName: 'KahaniNest',
-    title: 'KahaniNest – हिंदी एवं हिंग्लिश 18+ वयस्क कहानियाँ',
+    siteName: 'Chut Ki Kahani',
+    title: 'Chut Ki Kahani – हिंदी एवं हिंग्लिश 18+ वयस्क कहानियाँ',
     description:
       'सर्वश्रेष्ठ हिंदी एवं हिंग्लिश वयस्क कहानियों का मंच। पारिवारिक, रोमांस, ड्रामा और रहस्य की लोकप्रिय कहानियाँ।',
     images: [
@@ -85,13 +85,13 @@ export const metadata: Metadata = {
         url: '/logo.png',
         width: 600,
         height: 200,
-        alt: 'KahaniNest Logo',
+        alt: 'Chut Ki Kahani Logo',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'KahaniNest – 18+ Hindi Adult Stories',
+    title: 'Chut Ki Kahani – 18+ Hindi Adult Stories',
     description: 'Read original Hindi and Hinglish adult fiction stories.',
     images: ['/logo.png'],
   },
@@ -124,7 +124,7 @@ export default async function RootLayout({
   const organizationSchema = {
     '@context': 'https://schema.org',
     '@type': 'Organization',
-    name: 'KahaniNest',
+    name: 'Chut Ki Kahani',
     url: siteUrl,
     logo: `${siteUrl}/logo.png`,
     sameAs: [],

@@ -242,7 +242,7 @@ export default function ReportPage({ searchParams }: ReportPageProps) {
                 name="storyUrl"
                 required
                 defaultValue={searchParams?.storyUrl || ''}
-                placeholder="https://kahaninest.com/story/..."
+                placeholder="https://example.com/story/..."
                 className="w-full px-3.5 py-2.5 border border-gray-300 rounded-lg text-xs sm:text-sm focus:ring-2 focus:ring-[#b8233e] focus:outline-none bg-white font-mono"
               />
               <p className="text-[11px] text-gray-500 mt-1 font-devanagari">

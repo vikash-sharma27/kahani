@@ -5,8 +5,8 @@ import Link from 'next/link';
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://kahaninest.com';
 
 export const metadata: Metadata = {
-  title: 'गोपनीयता नीति (Privacy Policy) | KahaniNest',
-  description: 'KahaniNest की गोपनीयता नीति, डेटा सुरक्षा, कुकीज़ और उपयोगकर्ता गोपनीयता नियम।',
+  title: 'गोपनीयता नीति (Privacy Policy) | Chut Ki Kahani',
+  description: 'Chut Ki Kahani की गोपनीयता नीति, डेटा सुरक्षा, कुकीज़ और उपयोगकर्ता गोपनीयता नियम।',
   alternates: { canonical: `${baseUrl}/privacy` },
 };
 
@@ -18,7 +18,7 @@ export default function PrivacyPage() {
           गोपनीयता नीति (Privacy Policy)
         </h1>
         <p className="text-sm text-gray-600 leading-relaxed">
-          {process.env.SITE_NAME || 'KahaniNest'} पर हम आपके व्यक्तिगत डेटा की गोपनीयता का सम्मान करते हैं।
+          {process.env.SITE_NAME || 'Chut Ki Kahani'} पर हम आपके व्यक्तिगत डेटा की गोपनीयता का सम्मान करते हैं।
         </p>
 
         <section className="space-y-3 text-sm text-gray-700 leading-relaxed">

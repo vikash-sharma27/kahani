@@ -12,11 +12,11 @@ interface SearchPageProps {
 
 export async function generateMetadata({ searchParams }: SearchPageProps): Promise<Metadata> {
   const query = (searchParams?.q || '').trim();
-  const title = query ? `"${query}" के लिए खोज परिणाम | KahaniNest` : 'कहानी खोजें (Search Stories) | KahaniNest';
+  const title = query ? `"${query}" के लिए खोज परिणाम | Chut Ki Kahani` : 'कहानी खोजें (Search Stories) | Chut Ki Kahani';
 
   return {
     title,
-    description: 'KahaniNest पर अपनी पसंदीदा हिंदी एवं हिंग्लिश कहानियाँ खोजें।',
+    description: 'Chut Ki Kahani पर अपनी पसंदीदा हिंदी एवं हिंग्लिश कहानियाँ खोजें।',
     robots: {
       index: false,
       follow: true,

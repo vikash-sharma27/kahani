@@ -19,7 +19,7 @@ export default async function AdminSettingsPage() {
   const adsEnabled = settings['adsEnabled'] !== false;
   const commentAutoApprove = settings['commentAutoApprove'] === true;
   const maintenanceMode = settings['maintenanceMode'] === true;
-  const siteName = (settings['siteName'] as string) || process.env.SITE_NAME || 'KahaniNest';
+  const siteName = (settings['siteName'] as string) || process.env.SITE_NAME || 'Chut Ki Kahani';
 
   return (
     <div className="max-w-3xl space-y-6">

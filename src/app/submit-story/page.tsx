@@ -22,7 +22,7 @@ export default function SubmitStoryPage() {
             ✍️ अपनी कहानी भेजें (Submit Your Story)
           </h1>
           <p className="text-sm text-gray-600 mt-2 font-devanagari">
-            KahaniNest पर अपनी मौलिक वयस्क हिंदी/हिंग्लिश कहानी प्रकाशित करवाएं।
+            Chut Ki Kahani पर अपनी मौलिक वयस्क हिंदी/हिंग्लिश कहानी प्रकाशित करवाएं।
           </p>
         </div>
 

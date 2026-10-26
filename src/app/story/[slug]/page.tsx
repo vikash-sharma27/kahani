@@ -41,7 +41,7 @@ export async function generateMetadata({ params }: StoryPageProps): Promise<Meta
     return { title: 'Story Not Found' };
   }
 
-  const title = story.seoTitle || `${story.title} – ${story.category.name} कहानी | KahaniNest`;
+  const title = story.seoTitle || `${story.title} – ${story.category.name} कहानी | Chut Ki Kahani`;
   const description = story.seoDescription || story.excerpt;
   const canonicalUrl = `${baseUrl}/story/${story.slug}`;
 
@@ -54,21 +54,21 @@ export async function generateMetadata({ params }: StoryPageProps): Promise<Meta
       `${story.authorName} की कहानी`,
       'हिंदी वयस्क कहानियाँ',
       'Hindi stories',
-      'KahaniNest',
+      'Chut Ki Kahani',
     ],
     alternates: { canonical: canonicalUrl },
     openGraph: {
       title,
       description,
       url: canonicalUrl,
-      siteName: 'KahaniNest',
+      siteName: 'Chut Ki Kahani',
       type: 'article',
       locale: 'hi_IN',
       publishedTime: (story.publishedAt || new Date()).toISOString(),
       modifiedTime: (story.updatedAt || story.publishedAt || new Date()).toISOString(),
       section: story.category.name,
       authors: [story.authorName],
-      tags: [story.category.name, 'Hindi Adult Stories', 'KahaniNest'],
+      tags: [story.category.name, 'Hindi Adult Stories', 'Chut Ki Kahani'],
       images: [
         {
           url: `${baseUrl}/logo.png`,
@@ -173,7 +173,7 @@ export default async function StoryPage({ params }: StoryPageProps) {
         dateModified: (story.updatedAt || story.publishedAt || story.createdAt).toISOString(),
         publisher: {
           '@type': 'Organization',
-          name: 'KahaniNest',
+          name: 'Chut Ki Kahani',
           logo: {
             '@type': 'ImageObject',
             url: `${baseUrl}/logo.png`,

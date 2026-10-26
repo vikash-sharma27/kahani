@@ -11,7 +11,7 @@ export async function updateSiteSettingsAction(formData: FormData): Promise<void
   const adsEnabled = formData.get('adsEnabled') === 'true' || formData.get('adsEnabled') === 'on';
   const commentAutoApprove = formData.get('commentAutoApprove') === 'true' || formData.get('commentAutoApprove') === 'on';
   const maintenanceMode = formData.get('maintenanceMode') === 'true' || formData.get('maintenanceMode') === 'on';
-  const siteName = (formData.get('siteName') as string) || 'KahaniNest';
+  const siteName = (formData.get('siteName') as string) || 'Chut Ki Kahani';
 
   const updates = [
     { key: 'adsEnabled', value: adsEnabled },

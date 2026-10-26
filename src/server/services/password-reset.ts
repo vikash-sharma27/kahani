@@ -55,7 +55,7 @@ export async function sendPasswordResetEmail(email: string, token: string): Prom
       body: JSON.stringify({
         from: process.env.NOTIFY_EMAIL || 'security@storynest.internal',
         to: email,
-        subject: `Admin Password Reset - ${process.env.SITE_NAME || 'KahaniNest'}`,
+        subject: `Admin Password Reset - ${process.env.SITE_NAME || 'Chut Ki Kahani'}`,
         html: `
           <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
             <h2>Team Account Password Reset</h2>

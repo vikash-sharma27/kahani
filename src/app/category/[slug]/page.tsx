@@ -40,11 +40,11 @@ export async function generateMetadata({ params }: CategoryPageProps): Promise<M
 
   if (!category) return { title: 'Category Not Found' };
 
-  const title = category.seoTitle || `${category.name} कहानियाँ (Stories in Hindi) | KahaniNest`;
+  const title = category.seoTitle || `${category.name} कहानियाँ (Stories in Hindi) | Chut Ki Kahani`;
   const description =
     category.seoDescription ||
     category.description ||
-    `KahaniNest पर पढ़ें ${category.name} की सर्वश्रेष्ठ मौलिक हिंदी एवं हिंग्लिश 18+ वयस्क कहानियाँ।`;
+    `Chut Ki Kahani पर पढ़ें ${category.name} की सर्वश्रेष्ठ मौलिक हिंदी एवं हिंग्लिश 18+ वयस्क कहानियाँ।`;
 
   const canonicalUrl = `${baseUrl}/category/${category.slug}`;
 
@@ -58,7 +58,7 @@ export async function generateMetadata({ params }: CategoryPageProps): Promise<M
       'हिंदी कहानियाँ',
       'adult fiction hindi',
       'desikahani',
-      'KahaniNest',
+      'Chut Ki Kahani',
     ],
     alternates: { canonical: canonicalUrl },
     robots: {
@@ -71,7 +71,7 @@ export async function generateMetadata({ params }: CategoryPageProps): Promise<M
       title,
       description,
       url: canonicalUrl,
-      siteName: 'KahaniNest',
+      siteName: 'Chut Ki Kahani',
       locale: 'hi_IN',
       type: 'website',
       images: [{ url: `${baseUrl}/logo.png`, width: 600, height: 200, alt: `${category.name} Stories` }],
@@ -163,7 +163,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
       },
       {
         '@type': 'CollectionPage',
-        name: `${category.name} कहानियाँ | KahaniNest`,
+        name: `${category.name} कहानियाँ | Chut Ki Kahani`,
         url: categoryUrl,
         description: category.description || `${category.name} कहानियाँ`,
         mainEntity: {

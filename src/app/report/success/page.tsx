@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { Container } from '@/components/ui/Container';
 
 export const metadata: Metadata = {
-  title: 'रिपोर्ट दर्ज हुई | KahaniNest',
+  title: 'रिपोर्ट दर्ज हुई | Chut Ki Kahani',
   robots: { index: false, follow: false },
 };
 

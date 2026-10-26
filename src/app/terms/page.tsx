@@ -5,8 +5,8 @@ import Link from 'next/link';
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://kahaninest.com';
 
 export const metadata: Metadata = {
-  title: 'उपयोग की शर्तें (Terms of Service) | KahaniNest',
-  description: 'KahaniNest 18+ वयस्क कहानी मंच की उपयोग की कानूनी शर्तें, नियम एवं दायित्व।',
+  title: 'उपयोग की शर्तें (Terms of Service) | Chut Ki Kahani',
+  description: 'Chut Ki Kahani 18+ वयस्क कहानी मंच की उपयोग की कानूनी शर्तें, नियम एवं दायित्व।',
   alternates: { canonical: `${baseUrl}/terms` },
 };
 
@@ -18,7 +18,7 @@ export default function TermsPage() {
           उपयोग की शर्तें (Terms of Service)
         </h1>
         <p className="text-sm text-gray-600 leading-relaxed">
-          अंतिम अद्यतन: अक्टूबर 2026. {process.env.SITE_NAME || 'KahaniNest'} का उपयोग करने से पहले इन शर्तों को ध्यान से पढ़ें।
+          अंतिम अद्यतन: अक्टूबर 2026. {process.env.SITE_NAME || 'Chut Ki Kahani'} का उपयोग करने से पहले इन शर्तों को ध्यान से पढ़ें।
         </p>
 
         <section className="space-y-3 text-sm text-gray-700 leading-relaxed font-devanagari">

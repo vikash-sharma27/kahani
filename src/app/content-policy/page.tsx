@@ -5,8 +5,8 @@ import type { Metadata } from 'next';
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://kahaninest.com';
 
 export const metadata: Metadata = {
-  title: 'सामग्री नीति (Content & Safety Policy) | KahaniNest',
-  description: 'KahaniNest की सामग्री नीति, बाल सुरक्षा (Zero-Tolerance on Underage), और सख्त आचार संहिता।',
+  title: 'सामग्री नीति (Content & Safety Policy) | Chut Ki Kahani',
+  description: 'Chut Ki Kahani की सामग्री नीति, बाल सुरक्षा (Zero-Tolerance on Underage), और सख्त आचार संहिता।',
   alternates: { canonical: `${baseUrl}/content-policy` },
 };
 
@@ -18,7 +18,7 @@ export default function ContentPolicyPage() {
           सामग्री नीति (Content &amp; Safety Policy)
         </h1>
         <p className="text-gray-600 text-sm mb-6 leading-relaxed">
-          {process.env.SITE_NAME || 'KahaniNest'} वयस्कों (18+) के लिए एक जिम्मेदार मंच है। हमारी नीति शून्य-सहनशीलता (Zero-Tolerance) पर आधारित है।
+          {process.env.SITE_NAME || 'Chut Ki Kahani'} वयस्कों (18+) के लिए एक जिम्मेदार मंच है। हमारी नीति शून्य-सहनशीलता (Zero-Tolerance) पर आधारित है।
         </p>
 
         <div className="space-y-6">

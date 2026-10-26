@@ -5,8 +5,8 @@ import type { Metadata } from 'next';
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://kahaninest.com';
 
 export const metadata: Metadata = {
-  title: 'अस्वीकरण (18+ Legal Disclaimer) | KahaniNest',
-  description: '18+ कानूनी अस्वीकरण एवं शर्तें – KahaniNest पर सभी सामग्री केवल वयस्क पाठकों के लिए और 100% काल्पनिक है।',
+  title: 'अस्वीकरण (18+ Legal Disclaimer) | Chut Ki Kahani',
+  description: '18+ कानूनी अस्वीकरण एवं शर्तें – Chut Ki Kahani पर सभी सामग्री केवल वयस्क पाठकों के लिए और 100% काल्पनिक है।',
   alternates: { canonical: `${baseUrl}/disclaimer` },
 };
 

@@ -22,7 +22,7 @@ export default async function AdminLayout({
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-4">
             <Link href="/admin" className="font-extrabold text-gray-900 text-lg">
-              {process.env.SITE_NAME || 'KahaniNest'}{' '}
+              {process.env.SITE_NAME || 'Chut Ki Kahani'}{' '}
               <span className="text-xs bg-red-100 text-red-700 font-semibold px-2 py-0.5 rounded">
                 Admin
               </span>
