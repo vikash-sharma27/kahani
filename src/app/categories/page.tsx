@@ -52,6 +52,15 @@ export const metadata: Metadata = {
   },
 };
 
+const colourMap: Record<string, { border: string; bg: string; text: string; badgeBorder: string }> = {
+  rose: { border: 'border-l-[#b8233e]', bg: 'bg-rose-50', text: 'text-[#b8233e]', badgeBorder: 'border-rose-200' },
+  amber: { border: 'border-l-amber-500', bg: 'bg-amber-50', text: 'text-amber-700', badgeBorder: 'border-amber-200' },
+  blue: { border: 'border-l-sky-600', bg: 'bg-sky-50', text: 'text-sky-700', badgeBorder: 'border-sky-200' },
+  purple: { border: 'border-l-purple-600', bg: 'bg-purple-50', text: 'text-purple-700', badgeBorder: 'border-purple-200' },
+  indigo: { border: 'border-l-indigo-600', bg: 'bg-indigo-50', text: 'text-indigo-700', badgeBorder: 'border-indigo-200' },
+  emerald: { border: 'border-l-emerald-600', bg: 'bg-emerald-50', text: 'text-emerald-700', badgeBorder: 'border-emerald-200' },
+};
+
 export default async function CategoriesPage() {
   let categories: Array<{
     id: string;
@@ -124,35 +133,45 @@ export default async function CategoriesPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
-            {categories.map((cat) => (
-              <Link
-                key={cat.id}
-                href={`/category/${cat.slug}`}
-                className="card-3d border-l-[5px] border-l-[#b8233e] p-4.5 group flex flex-col justify-between"
-              >
-                <div>
-                  <div className="flex items-center justify-between mb-1.5">
-                    <h2 className="font-bold text-base text-gray-900 group-hover:text-[#b8233e] transition-colors font-devanagari">
-                      {cat.name}
-                    </h2>
-                    <span className="text-xs font-mono font-bold bg-rose-50 text-[#b8233e] border border-rose-100 px-2 py-0.5 rounded-md">
-                      {cat._count.stories} कहानियाँ
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {categories.map((cat) => {
+              const style = colourMap[cat.colour || ''] || colourMap.rose;
+              return (
+                <Link
+                  key={cat.id}
+                  href={`/category/${cat.slug}`}
+                  className={`card-3d ${style.border} border-l-[5px] p-5 group flex flex-col justify-between relative overflow-hidden transition-all duration-200 hover:-translate-y-1 hover:shadow-md min-h-[140px]`}
+                >
+                  {/* Subtle ambient light gradient sheen */}
+                  <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-rose-100/40 via-transparent to-transparent pointer-events-none rounded-tr-xl" />
+
+                  <div className="relative z-10">
+                    <div className="flex items-start justify-between gap-3 mb-2">
+                      <h2 className="font-bold text-base sm:text-lg text-gray-900 group-hover:text-[#b8233e] transition-colors font-devanagari leading-snug">
+                        {cat.name}
+                      </h2>
+                      <span className={`shrink-0 text-xs font-medium px-2.5 py-0.5 rounded-full border shadow-2xs font-devanagari ${style.bg} ${style.text} ${style.badgeBorder}`}>
+                        {cat._count.stories === 1 ? '1 कहानी' : `${cat._count.stories} कहानियाँ`}
+                      </span>
+                    </div>
+
+                    <p className="text-xs sm:text-sm text-gray-600 line-clamp-2 font-devanagari leading-relaxed">
+                      {cat.description || `${cat.name} श्रेणी की सभी मौलिक और लोकप्रिय कहानियाँ पढ़ें।`}
+                    </p>
+                  </div>
+
+                  <div className="relative z-10 mt-4 pt-3 border-t border-rose-100/70 flex items-center justify-between">
+                    <span className="text-[11px] text-gray-400 font-devanagari group-hover:text-gray-600 transition-colors">
+                      श्रेणी एक्सप्लोर करें
+                    </span>
+                    <span className="text-xs font-bold text-[#b8233e] group-hover:translate-x-1.5 transition-transform inline-flex items-center gap-1 font-devanagari">
+                      <span>कहानियाँ देखें</span>
+                      <span className="text-sm leading-none">»</span>
                     </span>
                   </div>
-                  <p className="text-xs text-gray-600 line-clamp-2 font-devanagari leading-relaxed">
-                    {cat.description || `${cat.name} श्रेणी की मौलिक हिंदी वयस्क कहानियाँ पढ़ें।`}
-                  </p>
-                </div>
-
-                <div className="mt-3.5 pt-2.5 border-t border-rose-50 flex justify-end">
-                  <span className="text-xs font-bold text-[#b8233e] group-hover:translate-x-1 transition-transform inline-flex items-center gap-1 font-devanagari">
-                    <span>कहानियाँ देखें</span>
-                    <span>»</span>
-                  </span>
-                </div>
-              </Link>
-            ))}
+                </Link>
+              );
+            })}
           </div>
         </main>
 
