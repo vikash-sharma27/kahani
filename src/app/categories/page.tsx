@@ -13,7 +13,7 @@ const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://kahaninest.com';
 export const metadata: Metadata = {
   title: 'सभी कहानी श्रेणियाँ (All Story Categories) | Chut Ki Kahani',
   description:
-    'Chut Ki Kahani की सभी वयस्क कहानी श्रेणियाँ देखें – पारिवारिक, रोमांस, ड्रामा, रहस्य, फैंटेसी और कॉमेडी की लोकप्रिय हिंदी व हिंग्लिश कहानियाँ।',
+    'Chut Ki Kahani की सभी वयस्क कहानी श्रेणियाँ देखें – पारिवारिक, रोमांस, ड्रामा, रहस्य, फैंटेसी और कॉमेडी की लोकप्रिय हिंदी कहानियाँ।',
   keywords: [
     'कहानी श्रेणियाँ',
     'हिंदी स्टोरी केटेगरी',
@@ -117,7 +117,7 @@ export default async function CategoriesPage() {
           <div className="bg-white rounded-xl border border-rose-100 border-b-4 border-b-[#b8233e] p-5 shadow-2xs">
             <h1 className="text-xl sm:text-2xl font-extrabold text-[#1a252f] font-devanagari flex items-center gap-2">
               <span>📚</span>
-              <span>सभी कहानी श्रेणियां (All Story Categories)</span>
+              <span>सभी कहानी श्रेणियाँ</span>
             </h1>
             <p className="text-xs sm:text-sm text-gray-500 mt-1 font-devanagari">
               अपनी पसंदीदा श्रेणी चुनें और सैकड़ों मौलिक वयस्क कहानियाँ पढ़ना शुरू करें।
@@ -140,11 +140,9 @@ export default async function CategoriesPage() {
                       {cat._count.stories} कहानियाँ
                     </span>
                   </div>
-                  {cat.description && (
-                    <p className="text-xs text-gray-600 line-clamp-2 font-devanagari leading-relaxed">
-                      {cat.description}
-                    </p>
-                  )}
+                  <p className="text-xs text-gray-600 line-clamp-2 font-devanagari leading-relaxed">
+                    {cat.description || `${cat.name} श्रेणी की मौलिक हिंदी वयस्क कहानियाँ पढ़ें।`}
+                  </p>
                 </div>
 
                 <div className="mt-3.5 pt-2.5 border-t border-rose-50 flex justify-end">
