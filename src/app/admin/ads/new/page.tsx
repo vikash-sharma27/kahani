@@ -21,8 +21,21 @@ const POSITION_LABELS: Record<AdPosition, string> = {
   STICKY_MOBILE: 'Sticky Footer (Mobile)',
 };
 
-export default async function NewAdPage() {
+interface NewAdPageProps {
+  searchParams?: { error?: string };
+}
+
+export default async function NewAdPage({ searchParams }: NewAdPageProps) {
   await requireRole(Role.ADMIN);
+
+  const errorMessages: Record<string, string> = {
+    NAME_REQUIRED: 'विज्ञापन का नाम (Ad Name) अनिवार्य है।',
+    POSITION_REQUIRED: 'कृपया विज्ञापन के लिए एक मान्य स्थान (Position) चुनें।',
+    CODE_REQUIRED: 'HTML / Script कोड पेस्ट करना अनिवार्य है।',
+    CREATE_FAILED: 'विज्ञापन सहेजने में त्रुटि आई। कृपया पुनः प्रयास करें।',
+  };
+
+  const errorMessage = searchParams?.error ? errorMessages[searchParams.error] || 'अनुरोध विफल रहा।' : null;
 
   return (
     <div className="max-w-2xl mx-auto space-y-6">
@@ -37,6 +50,13 @@ export default async function NewAdPage() {
         <span className="text-gray-300">/</span>
         <h1 className="text-xl font-bold text-gray-900">New Ad Slot</h1>
       </div>
+
+      {errorMessage && (
+        <div className="p-4 bg-red-50 border border-red-200 text-red-800 rounded-xl text-sm font-devanagari flex items-center gap-2 shadow-2xs">
+          <span>⚠️</span>
+          <span>{errorMessage}</span>
+        </div>
+      )}
 
       {/* Form Card */}
       <div className="bg-white border border-gray-200 rounded-xl shadow-sm p-6 space-y-5">

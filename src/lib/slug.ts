@@ -88,3 +88,47 @@ export function generateSlug(title: string, fallbackId?: string): string {
   // Fallback to id-based slug
   return fallbackId ? `story-${fallbackId.toLowerCase()}` : `story-${Date.now()}`;
 }
+
+/**
+ * Ensures category slug is always 100% unique in DB, auto-appending -2, -3, etc.
+ */
+export async function getUniqueCategorySlug(baseText: string): Promise<string> {
+  const { db } = await import('@/lib/db');
+  const base = generateSlug(baseText);
+  let slug = base;
+  let counter = 1;
+
+  while (true) {
+    const existing = await db.category.findUnique({
+      where: { slug },
+      select: { id: true },
+    });
+    if (!existing) {
+      return slug;
+    }
+    counter++;
+    slug = `${base}-${counter}`;
+  }
+}
+
+/**
+ * Ensures story slug is always 100% unique in DB, auto-appending -2, -3, etc.
+ */
+export async function getUniqueStorySlug(baseText: string, currentStoryId?: string): Promise<string> {
+  const { db } = await import('@/lib/db');
+  const base = generateSlug(baseText);
+  let slug = base;
+  let counter = 1;
+
+  while (true) {
+    const existing = await db.story.findUnique({
+      where: { slug },
+      select: { id: true },
+    });
+    if (!existing || (currentStoryId && existing.id === currentStoryId)) {
+      return slug;
+    }
+    counter++;
+    slug = `${base}-${counter}`;
+  }
+}

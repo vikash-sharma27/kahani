@@ -14,9 +14,18 @@ export const metadata: Metadata = { title: 'Submissions Moderation | Admin' };
 export default async function AdminSubmissionsPage({
   searchParams,
 }: {
-  searchParams: { page?: string; status?: string };
+  searchParams: { page?: string; status?: string; error?: string; success?: string };
 }) {
   await requireAuth();
+
+  const errorMessageMap: Record<string, string> = {
+    NOT_FOUND: 'प्रस्तुति नहीं मिली।',
+    NO_CATEGORIES: 'कहानी प्रकाशित करने से पहले कम से कम एक श्रेणी बनाना आवश्यक है।',
+    PUBLISH_FAILED: 'कहानी प्रकाशित करने में समस्या आई। कृपया पुनः प्रयास करें।',
+  };
+
+  const errorMessage = searchParams?.error ? errorMessageMap[searchParams.error] || 'अनुरोध विफल रहा।' : null;
+  const isApprovedSuccess = searchParams?.success === 'APPROVED';
 
   const page = Math.max(1, parseInt(searchParams?.page || '1', 10));
   const perPage = 15;
@@ -67,6 +76,20 @@ export default async function AdminSubmissionsPage({
           ))}
         </div>
       </div>
+
+      {errorMessage && (
+        <div className="p-4 bg-red-50 border border-red-200 text-red-800 rounded-xl text-sm font-devanagari flex items-center gap-2 shadow-2xs">
+          <span>⚠️</span>
+          <span>{errorMessage}</span>
+        </div>
+      )}
+
+      {isApprovedSuccess && (
+        <div className="p-4 bg-green-50 border border-green-200 text-green-800 rounded-xl text-sm font-devanagari flex items-center gap-2 shadow-2xs">
+          <span>✅</span>
+          <span>कहानी सफलतापूर्वक स्वीकृत एवं प्रकाशित कर दी गई है!</span>
+        </div>
+      )}
 
       <div className="bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm">
         {submissions.length === 0 ? (

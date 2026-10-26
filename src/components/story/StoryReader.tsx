@@ -31,6 +31,24 @@ export function StoryReader({
 }: StoryReaderProps) {
   const [fontSize, setFontSize] = useState<FontSize>('base');
 
+  // Format plain text into clean paragraphs so spaces and line breaks are honored
+  const formattedContent = React.useMemo(() => {
+    if (!content) return '';
+    const trimmed = content.trim();
+    if (/<p[\s>]/i.test(trimmed)) {
+      return trimmed;
+    }
+    const paragraphs = trimmed
+      .split(/\r?\n\s*\r?\n/)
+      .map((p) => p.trim())
+      .filter(Boolean);
+
+    if (paragraphs.length === 0) return '';
+    return paragraphs
+      .map((p) => `<p>${p.replace(/\r?\n/g, '<br />')}</p>`)
+      .join('');
+  }, [content]);
+
   return (
     <div className="relative">
       {/* Story Header */}
@@ -60,11 +78,11 @@ export function StoryReader({
       {/* Story Body */}
       <article
         className={`prose max-w-none ${FONT_SIZES[fontSize]} leading-loose font-devanagari text-gray-800
-          prose-p:mb-4 prose-headings:font-bold prose-headings:text-gray-900
+          prose-p:mb-5 prose-p:leading-relaxed prose-headings:font-bold prose-headings:text-gray-900
           prose-strong:text-gray-900 prose-blockquote:border-l-red-400 prose-blockquote:bg-red-50/30 prose-blockquote:px-4 prose-blockquote:py-1
           prose-a:text-red-600 prose-a:no-underline hover:prose-a:underline
         `}
-        dangerouslySetInnerHTML={{ __html: content }}
+        dangerouslySetInnerHTML={{ __html: formattedContent }}
       />
 
       {/* Font size floating controls */}

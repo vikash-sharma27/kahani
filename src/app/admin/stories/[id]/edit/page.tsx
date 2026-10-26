@@ -7,10 +7,19 @@ import Link from 'next/link';
 
 interface EditStoryPageProps {
   params: { id: string };
+  searchParams?: { error?: string };
 }
 
-export default async function EditStoryPage({ params }: EditStoryPageProps) {
+export default async function EditStoryPage({ params, searchParams }: EditStoryPageProps) {
   await requireAuth();
+
+  const errorMessageMap: Record<string, string> = {
+    REQUIRED_FIELDS: 'शीर्षक, सामग्री और श्रेणी चुनना अनिवार्य है।',
+    ADULT_CONFIRMATION_REQUIRED: 'कहानी प्रकाशित या शेड्यूल करने के लिए 18+ वयस्क पुष्टि चेकबॉक्स टिक करना अनिवार्य है।',
+    UPDATE_FAILED: 'कहानी अपडेट करने में त्रुटि आई। कृपया पुनः प्रयास करें।',
+  };
+
+  const errorMessage = searchParams?.error ? errorMessageMap[searchParams.error] || 'अनुरोध विफल रहा।' : null;
 
   const [story, categories] = await Promise.all([
     db.story.findUnique({
@@ -47,6 +56,13 @@ export default async function EditStoryPage({ params }: EditStoryPageProps) {
           ← वापस कहानियों की सूची पर जाएँ
         </Link>
       </div>
+
+      {errorMessage && (
+        <div className="mb-6 p-4 bg-red-50 border border-red-200 text-red-800 rounded-xl text-sm font-devanagari flex items-center gap-2 shadow-2xs">
+          <span>⚠️</span>
+          <span>{errorMessage}</span>
+        </div>
+      )}
 
       <form action={updateActionWithId} className="bg-white border border-gray-200 rounded-2xl p-6 sm:p-8 shadow-sm space-y-6">
         {/* Title */}

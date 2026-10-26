@@ -15,27 +15,37 @@ export async function createAdAction(formData: FormData): Promise<void> {
   const htmlCode = ((formData.get('htmlCode') as string) || '').trim();
   const enabled  = formData.get('enabled') === 'true';
 
-  if (!name)     throw new Error('Ad ka naam zaroori hai.');
-  if (!position || !Object.values(AdPosition).includes(position))
-    throw new Error('Valid position choose karo.');
-  if (!htmlCode) throw new Error('HTML / Script code zaroori hai.');
+  if (!name) {
+    redirect('/admin/ads/new?error=NAME_REQUIRED');
+  }
+  if (!position || !Object.values(AdPosition).includes(position)) {
+    redirect('/admin/ads/new?error=POSITION_REQUIRED');
+  }
+  if (!htmlCode) {
+    redirect('/admin/ads/new?error=CODE_REQUIRED');
+  }
 
-  const ad = await db.advertisement.create({
-    data: { name, position, htmlCode, enabled },
-  });
+  try {
+    const ad = await db.advertisement.create({
+      data: { name, position, htmlCode, enabled },
+    });
 
-  await db.auditLog.create({
-    data: {
-      actorId:  session.userId,
-      action:   'CREATE_AD',
-      entity:   'ADVERTISEMENT',
-      entityId: ad.id,
-      metadata: { name, position, enabled },
-    },
-  });
+    await db.auditLog.create({
+      data: {
+        actorId:  session.userId,
+        action:   'CREATE_AD',
+        entity:   'ADVERTISEMENT',
+        entityId: ad.id,
+        metadata: { name, position, enabled },
+      },
+    });
+  } catch (err) {
+    console.error('Failed to create advertisement:', err);
+    redirect('/admin/ads/new?error=CREATE_FAILED');
+  }
 
   revalidatePath('/admin/ads');
-  redirect('/admin/ads');
+  redirect('/admin/ads?success=CREATED');
 }
 
 /** Ad ka status toggle karna (enable / disable) */

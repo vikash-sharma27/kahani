@@ -9,9 +9,25 @@ import { StoryStatus } from '@prisma/client';
 export default async function AdminStoriesPage({
   searchParams,
 }: {
-  searchParams: { page?: string; status?: string; search?: string };
+  searchParams: { page?: string; status?: string; search?: string; error?: string; success?: string };
 }) {
   await requireAuth();
+
+  const successMessage =
+    searchParams?.success === 'CREATED'
+      ? 'नई कहानी सफलतापूर्वक प्रकाशित / सुरक्षित कर दी गई!'
+      : searchParams?.success === 'UPDATED'
+      ? 'कहानी में बदलाव सफलतापूर्वक सुरक्षित किए गए!'
+      : searchParams?.success === 'DELETED'
+      ? 'कहानी सफलतापूर्वक हटा दी गई!'
+      : null;
+
+  const errorMessage =
+    searchParams?.error === 'NOT_FOUND'
+      ? 'कहानी नहीं मिली।'
+      : searchParams?.error === 'DELETE_FAILED'
+      ? 'कहानी हटाने में कोई त्रुटि आई।'
+      : null;
 
   const page = Math.max(1, parseInt(searchParams?.page || '1', 10));
   const perPage = 15;
@@ -62,6 +78,20 @@ export default async function AdminStoriesPage({
           + नई कहानी जोड़ें (New Story)
         </Link>
       </div>
+
+      {successMessage && (
+        <div className="p-4 bg-green-50 border border-green-200 text-green-800 rounded-xl text-sm font-devanagari flex items-center gap-2 shadow-2xs">
+          <span>✅</span>
+          <span>{successMessage}</span>
+        </div>
+      )}
+
+      {errorMessage && (
+        <div className="p-4 bg-red-50 border border-red-200 text-red-800 rounded-xl text-sm font-devanagari flex items-center gap-2 shadow-2xs">
+          <span>⚠️</span>
+          <span>{errorMessage}</span>
+        </div>
+      )}
 
       {/* Filter bar */}
       <div className="bg-white border border-gray-200 rounded-xl p-4 flex flex-wrap gap-3 items-center justify-between">

@@ -6,7 +6,11 @@ import { createCategoryAction, deleteCategoryAction } from '@/server/actions/cat
 
 export const metadata: Metadata = { title: 'Categories Management | Admin' };
 
-export default async function AdminCategoriesPage() {
+interface AdminCategoriesPageProps {
+  searchParams?: { error?: string; success?: string; count?: string };
+}
+
+export default async function AdminCategoriesPage({ searchParams }: AdminCategoriesPageProps) {
   const session = await requireAuth();
   const isAdmin = session.role === 'ADMIN';
 
@@ -19,6 +23,17 @@ export default async function AdminCategoriesPage() {
     },
   });
 
+  const errorMessages: Record<string, string> = {
+    HAS_STORIES: `सुरक्षित विलोपन नियम: इस श्रेणी में अभी ${searchParams?.count || ''} कहानियाँ हैं। पहले उन्हें दूसरी श्रेणी में स्थानांतरित करें।`,
+    NAME_REQUIRED: 'श्रेणी का नाम दर्ज करना अनिवार्य है।',
+    CREATE_FAILED: 'श्रेणी बनाने में समस्या आई। कृपया पुनः प्रयास करें।',
+    DELETE_FAILED: 'श्रेणी हटाने में समस्या आई।',
+  };
+
+  const errorMessage = searchParams?.error ? errorMessages[searchParams.error] || 'अनुरोध विफल रहा।' : null;
+  const isCreatedSuccess = searchParams?.success === 'CREATED';
+  const isDeletedSuccess = searchParams?.success === 'DELETED';
+
   return (
     <div className="space-y-8">
       <div>
@@ -29,6 +44,27 @@ export default async function AdminCategoriesPage() {
           कहानियों की श्रेणियाँ व्यवस्थित करें (छवि रहित, केवल CSS रंग टोकन)
         </p>
       </div>
+
+      {errorMessage && (
+        <div className="p-4 bg-red-50 border border-red-200 text-red-800 rounded-xl text-sm font-devanagari flex items-center gap-2 shadow-2xs">
+          <span>⚠️</span>
+          <span>{errorMessage}</span>
+        </div>
+      )}
+
+      {isCreatedSuccess && (
+        <div className="p-4 bg-green-50 border border-green-200 text-green-800 rounded-xl text-sm font-devanagari flex items-center gap-2 shadow-2xs">
+          <span>✅</span>
+          <span>नई श्रेणी सफलतापूर्वक जोड़ दी गई है!</span>
+        </div>
+      )}
+
+      {isDeletedSuccess && (
+        <div className="p-4 bg-green-50 border border-green-200 text-green-800 rounded-xl text-sm font-devanagari flex items-center gap-2 shadow-2xs">
+          <span>✅</span>
+          <span>श्रेणी सफलतापूर्वक हटा दी गई!</span>
+        </div>
+      )}
 
       {/* Add New Category Form (Admin only) */}
       {isAdmin && (
