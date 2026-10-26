@@ -123,7 +123,7 @@ export default async function CategoriesPage() {
 
       <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-6 items-start">
         <main className="space-y-4">
-          <div className="bg-white rounded-xl border border-rose-100 border-b-4 border-b-[#b8233e] p-5 shadow-2xs">
+          <div className="bg-white rounded-xl border border-rose-100 p-5 shadow-xs">
             <h1 className="text-xl sm:text-2xl font-extrabold text-[#1a252f] font-devanagari flex items-center gap-2">
               <span>📚</span>
               <span>सभी कहानी श्रेणियाँ</span>
@@ -140,7 +140,7 @@ export default async function CategoriesPage() {
                 <Link
                   key={cat.id}
                   href={`/category/${cat.slug}`}
-                  className={`card-3d ${style.border} border-l-[5px] p-5 group flex flex-col justify-between relative overflow-hidden transition-all duration-200 hover:-translate-y-1 hover:shadow-md min-h-[140px]`}
+                  className={`card-3d ${style.border} border-l-4 p-5 group flex flex-col justify-between relative overflow-hidden min-h-[140px]`}
                 >
                   {/* Subtle ambient light gradient sheen */}
                   <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-rose-100/40 via-transparent to-transparent pointer-events-none rounded-tr-xl" />

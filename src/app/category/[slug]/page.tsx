@@ -198,8 +198,8 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
       <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-6 items-start">
         {/* Left Column: Category Story Feed */}
         <main className="space-y-4">
-          {/* Category Banner Title Box with 3D border */}
-          <div className="bg-white rounded-xl border border-rose-100 border-b-4 border-b-[#b8233e] p-4 sm:p-5 shadow-2xs">
+          {/* Category Banner Title Box with simple border */}
+          <div className="bg-white rounded-xl border border-rose-100 p-4 sm:p-5 shadow-xs">
             <div className="flex items-center justify-between">
               <div>
                 <h1 className="text-xl sm:text-2xl font-extrabold text-[#1e1b1c] font-devanagari flex items-center gap-2">
@@ -254,7 +254,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
 
           {/* Pagination */}
           {totalPages > 1 && (
-            <div className="bg-white rounded-xl border border-rose-100 border-b-4 border-b-rose-200/80 p-3 shadow-2xs">
+            <div className="bg-white rounded-xl border border-rose-100 p-3 shadow-xs">
               <Pagination
                 currentPage={page}
                 totalPages={totalPages}

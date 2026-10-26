@@ -211,7 +211,7 @@ export default async function StoryPage({ params }: StoryPageProps) {
       <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-6 items-start">
         {/* Left Column: Reader view with 3D physical card effect */}
         <main className="space-y-4">
-          <div className="bg-white rounded-xl border border-rose-100 border-b-4 border-b-rose-200/80 p-5 sm:p-8 shadow-sm">
+          <div className="bg-white rounded-xl border border-rose-100 p-5 sm:p-8 shadow-xs">
             <StoryReader
               title={story.title}
               authorName={story.authorName}

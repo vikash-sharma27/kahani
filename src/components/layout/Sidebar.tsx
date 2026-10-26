@@ -59,8 +59,8 @@ export async function Sidebar() {
 
   return (
     <aside className="w-full space-y-5">
-      {/* Categories Widget (3D Card) */}
-      <div className="bg-white rounded-xl border border-rose-100 border-b-4 border-b-rose-200/80 overflow-hidden shadow-2xs">
+      {/* Categories Widget (Clean Simple Card) */}
+      <div className="bg-white rounded-xl border border-rose-100 overflow-hidden shadow-xs">
         <div className="bg-gradient-to-r from-[#b8233e] to-[#91152a] text-white px-4 py-2.5 font-bold text-xs sm:text-sm font-devanagari flex items-center justify-between">
           <span className="flex items-center gap-2">
             <span>📚</span>
@@ -90,8 +90,8 @@ export async function Sidebar() {
         </ul>
       </div>
 
-      {/* Popular Stories Widget (3D Card) */}
-      <div className="bg-white rounded-xl border border-rose-100 border-b-4 border-b-rose-200/80 overflow-hidden shadow-2xs">
+      {/* Popular Stories Widget (Clean Simple Card) */}
+      <div className="bg-white rounded-xl border border-rose-100 overflow-hidden shadow-xs">
         <div className="bg-gradient-to-r from-[#201a24] to-[#322336] text-white px-4 py-2.5 font-bold text-xs sm:text-sm font-devanagari flex items-center gap-2">
           <span>🔥</span>
           <span>लोकप्रिय कहानियाँ (Popular)</span>

@@ -173,7 +173,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
 
           {/* Pagination */}
           {totalPages > 1 && (
-            <div className="bg-white rounded-xl border border-rose-100 border-b-4 border-b-rose-200/80 p-3 shadow-2xs">
+            <div className="bg-white rounded-xl border border-rose-100 p-3 shadow-xs">
               <Pagination
                 currentPage={page}
                 totalPages={totalPages}

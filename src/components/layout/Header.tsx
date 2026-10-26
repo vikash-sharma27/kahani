@@ -6,6 +6,7 @@ import Image from 'next/image';
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [mobileSearchOpen, setMobileSearchOpen] = useState(false);
 
   return (
     <>
@@ -51,15 +52,17 @@ export function Header() {
             </form>
           </div>
 
-          {/* Mobile: Search icon + Hamburger */}
+          {/* Mobile: Search icon toggle + Hamburger */}
           <div className="flex md:hidden items-center gap-1">
-            <Link
-              href="/search"
+            <button
+              onClick={() => setMobileSearchOpen(!mobileSearchOpen)}
               aria-label="खोजें"
-              className="p-2 text-gray-700 active:bg-gray-100 rounded-lg text-lg min-h-[44px] min-w-[44px] flex items-center justify-center"
+              className={`p-2 rounded-lg text-lg min-h-[44px] min-w-[44px] flex items-center justify-center transition-colors ${
+                mobileSearchOpen ? 'bg-rose-100 text-[#b8233e]' : 'text-gray-700 active:bg-gray-100'
+              }`}
             >
               🔍
-            </Link>
+            </button>
             <button
               onClick={() => setMobileMenuOpen(true)}
               aria-label="मेनू खोलें"
@@ -69,6 +72,35 @@ export function Header() {
             </button>
           </div>
         </div>
+
+        {/* Mobile Dropdown Search Bar */}
+        {mobileSearchOpen && (
+          <div className="mt-2 pt-2 border-t border-rose-100 animate-in fade-in slide-in-from-top-1 duration-150">
+            <form
+              action="/search"
+              method="GET"
+              className="flex items-center gap-2 max-w-[1100px] mx-auto"
+              onSubmit={() => setMobileSearchOpen(false)}
+            >
+              <div className="relative flex-1">
+                <input
+                  type="text"
+                  name="q"
+                  autoFocus
+                  placeholder="यहाँ कहानी या लेखक का नाम लिखें..."
+                  className="w-full pl-9 pr-3 py-2 text-sm bg-gray-50 border border-rose-200 rounded-lg focus:outline-none focus:bg-white focus:border-[#b8233e] focus:ring-1 focus:ring-[#b8233e] font-devanagari"
+                />
+                <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-xs">🔍</span>
+              </div>
+              <button
+                type="submit"
+                className="bg-[#b8233e] hover:bg-[#981b31] active:bg-[#7f1124] text-white px-4 py-2 text-xs font-bold rounded-lg transition-colors shrink-0 font-devanagari"
+              >
+                खोजें
+              </button>
+            </form>
+          </div>
+        )}
       </div>
 
       {/* Main Navigation Bar (Dark) — Home + All Categories only */}
@@ -111,6 +143,27 @@ export function Header() {
                 ✕
               </button>
             </div>
+
+            {/* Quick Search inside Drawer */}
+            <form
+              action="/search"
+              method="GET"
+              className="mt-3 flex gap-2"
+              onSubmit={() => setMobileMenuOpen(false)}
+            >
+              <input
+                type="text"
+                name="q"
+                placeholder="कहानी या लेखक खोजें..."
+                className="flex-1 px-3 py-2 text-xs bg-gray-50 border border-gray-300 rounded-lg focus:outline-none focus:border-[#b8233e] font-devanagari"
+              />
+              <button
+                type="submit"
+                className="bg-[#b8233e] hover:bg-[#981b31] text-white px-3.5 py-2 text-xs font-bold rounded-lg font-devanagari shrink-0"
+              >
+                खोजें
+              </button>
+            </form>
 
             <div className="py-3 space-y-2 font-devanagari">
               <div className="pt-2 text-[11px] font-bold text-gray-400 uppercase tracking-wider">

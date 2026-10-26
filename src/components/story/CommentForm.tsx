@@ -30,7 +30,7 @@ export function CommentForm({ storyId, storySlug }: CommentFormProps) {
   }
 
   return (
-    <div className="bg-white rounded-xl border border-rose-100 border-b-4 border-b-rose-200/80 shadow-2xs overflow-hidden">
+    <div className="bg-white rounded-xl border border-rose-100 shadow-xs overflow-hidden">
       {/* Header */}
       <div className="bg-gradient-to-r from-[#201a24] to-[#322336] text-white px-4 py-2.5 flex items-center gap-2">
         <span className="text-sm">💬</span>

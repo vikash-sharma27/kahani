@@ -33,7 +33,7 @@ export function StoryCard({ story }: { story: StoryCardData }) {
   const style = colourMap[story.category.colour || ''] || colourMap.rose;
 
   return (
-    <article className={`card-3d ${style.border} border-l-[5px] p-4 sm:p-5 flex flex-col justify-between group relative overflow-hidden`}>
+    <article className={`card-3d ${style.border} border-l-4 p-4 sm:p-5 flex flex-col justify-between group relative overflow-hidden`}>
       {/* Subtle top romantic gradient sheen */}
       <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-rose-100/40 via-transparent to-transparent pointer-events-none rounded-tr-lg" />
 

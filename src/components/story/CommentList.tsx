@@ -26,7 +26,7 @@ export async function CommentList({ storyId }: CommentListProps) {
 
   if (comments.length === 0) {
     return (
-      <div className="bg-white rounded-xl border border-rose-100 border-b-4 border-b-rose-200/80 shadow-2xs overflow-hidden">
+      <div className="bg-white rounded-xl border border-rose-100 shadow-xs overflow-hidden">
         <div className="bg-gradient-to-r from-[#b8233e] to-[#91152a] text-white px-4 py-2.5 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <span className="text-sm">💬</span>
@@ -44,7 +44,7 @@ export async function CommentList({ storyId }: CommentListProps) {
   }
 
   return (
-    <div className="bg-white rounded-xl border border-rose-100 border-b-4 border-b-rose-200/80 shadow-2xs overflow-hidden">
+    <div className="bg-white rounded-xl border border-rose-100 shadow-xs overflow-hidden">
       {/* Header */}
       <div className="bg-gradient-to-r from-[#b8233e] to-[#91152a] text-white px-4 py-2.5 flex items-center justify-between">
         <div className="flex items-center gap-2">
