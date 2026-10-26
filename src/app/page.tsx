@@ -172,14 +172,16 @@ export default async function HomePage({ searchParams }: HomePageProps) {
           )}
 
           {/* Pagination */}
-          <div className="bg-white rounded-xl border border-rose-100 border-b-4 border-b-rose-200/80 p-3 shadow-2xs">
-            <Pagination
-              currentPage={page}
-              totalPages={totalPages}
-              basePath="/"
-              createPageUrl={(p) => (p === 1 ? '/' : `/?page=${p}`)}
-            />
-          </div>
+          {totalPages > 1 && (
+            <div className="bg-white rounded-xl border border-rose-100 border-b-4 border-b-rose-200/80 p-3 shadow-2xs">
+              <Pagination
+                currentPage={page}
+                totalPages={totalPages}
+                basePath="/"
+                createPageUrl={(p) => (p === 1 ? '/' : `/?page=${p}`)}
+              />
+            </div>
+          )}
         </main>
 
         {/* Right Column: Portal Sidebar */}

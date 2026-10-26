@@ -25,7 +25,7 @@ export function Pagination({
   const hasNext = currentPage < totalPages;
 
   return (
-    <nav aria-label="Pagination Navigation" className="w-full my-8">
+    <nav aria-label="Pagination Navigation" className="w-full py-1">
       {/* Mobile Compact View (Large tap buttons) */}
       <div className="flex sm:hidden items-center justify-between gap-3 w-full">
         {hasPrev ? (
