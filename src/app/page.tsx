@@ -14,9 +14,9 @@ export const revalidate = 120; // Cache for 2 minutes for high performance
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://kahaninest.com';
 
 export const metadata: Metadata = {
-  title: 'Chut Ki Kahani – हिंदी एवं हिंग्लिश 18+ वयस्क कहानियाँ | Best Desi Adult Stories',
+  title: 'Chut Ki Kahani – हिंदी 18+ वयस्क कहानियाँ',
   description:
-    'Chut Ki Kahani पर पढ़ें मौलिक हिंदी और हिंग्लिश वयस्क कहानियाँ। पारिवारिक, रोमांस, ड्रामा, थ्रिलर और रहस्य की 100% मौलिक व काल्पनिक कहानियाँ।',
+    'Chut Ki Kahani पर पढ़ें मौलिक हिंदी वयस्क कहानियाँ। पारिवारिक, रोमांस, ड्रामा, थ्रिलर और रहस्य की 100% मौलिक व काल्पनिक कहानियाँ।',
   keywords: [
     'हिंदी कहानियाँ',
     'वयस्क कहानियाँ',
